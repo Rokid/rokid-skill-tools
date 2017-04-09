@@ -36,5 +36,5 @@ then
         cat $DOMAIN.crt intermediate.pem > $DOMAIN.pem
         echo "create certificate success"
 fi
-rm -rf $WEB_SERVER_PATH/.well-known/acme-challenge
+rm -rf $WEB_SERVER_PATH/.well-known
 [  $is_listen_80 -eq 1 ] && netstat -nltp|grep "80" -w |tr -s " "|cut -d" " -f 7| cut -d"/" -f 1 |xargs -I {} kill {}
