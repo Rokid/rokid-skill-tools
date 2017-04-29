@@ -12,6 +12,7 @@ function check_http_server(){
 
 cd `dirname $0`
 DOMAIN=$1
+ping $DOMAIN -c 1 2>&1 | grep unknown > /dev/null && echo "can not resolve ip by domain : $DOMAIN "&& exit 1
 WEB_SERVER_PATH="."
 [ -z "$DOMAIN" ] && echo "usage: generate-letsencrypt-certificate.sh example.rokid.com" && exit 1
 [ ! -f account.key ] && echo "create account.key" && openssl genrsa 4096 > account.key
