@@ -30,7 +30,7 @@ else
         check_http_server
 fi
 mkdir -p $WEB_SERVER_PATH/.well-known/acme-challenge
-python acme_tiny.py --account-key ./account.key --csr ./$DOMAIN.csr --acme-dir WEB_SERVER_PATH/.well-known/acme-challenge > ./$DOMAIN.crt
+python acme_tiny.py --account-key ./account.key --csr ./$DOMAIN.csr --acme-dir $WEB_SERVER_PATH/.well-known/acme-challenge > ./$DOMAIN.crt
 if [ $? -eq 0 ]
 then
         [ ! -f intermediate.pem ] && wget https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem -O intermediate.pem 2>/dev/null
